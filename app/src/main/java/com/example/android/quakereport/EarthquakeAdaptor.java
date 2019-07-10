@@ -41,7 +41,7 @@ public class EarthquakeAdaptor extends ArrayAdapter<Earthquake> {
 
         TextView mag = (TextView) listItemView.findViewById(R.id.mag);
 
-        mag.setText(Double.toString(currentEarthquake.getMag()));
+        mag.setText(currentEarthquake.getMag());
 
         return listItemView;
     }
