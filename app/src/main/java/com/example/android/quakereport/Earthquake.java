@@ -4,11 +4,13 @@ public class Earthquake {
     private String eCountry;
     private String eDate;
     private String eMag;
+    private String eTime;
 
-    public Earthquake(String country, String date, String mag) {
+    public Earthquake(String country, String date, String mag, String time) {
         eCountry = country;
         eDate = date;
         eMag = mag;
+        eTime = time;
     }
 
     public String getCountry() {
@@ -23,5 +25,8 @@ public class Earthquake {
         return eMag;
     }
 
+    public String geteTime() {
+        return eTime;
+    }
 }
 

@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 
 /**
@@ -53,12 +55,15 @@ public final class QueryUtils {
                 JSONObject properties = element.getJSONObject("properties");
                 String mag = properties.getString("mag");
                 String place = properties.getString("place");
-                String time = properties.getString("time");
-                Earthquake earthquake = new Earthquake(place, time, mag);
+                long timeMille = properties.getLong("time");
+                Date dateObject =  new Date(timeMille);
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+                String date = dateFormatter.format(dateObject);
+                SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm a");
+                String time = timeFormatter.format(dateObject);
+                Earthquake earthquake = new Earthquake(place, date, mag, time);
                 earthquakes.add(earthquake);
             }
-            // TODO: Parse the response given by the SAMPLE_JSON_RESPONSE string and
-            // build up a list of Earthquake objects with the corresponding data.
 
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,

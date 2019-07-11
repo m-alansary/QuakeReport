@@ -43,6 +43,10 @@ public class EarthquakeAdaptor extends ArrayAdapter<Earthquake> {
 
         mag.setText(currentEarthquake.getMag());
 
+        TextView time = (TextView) listItemView.findViewById(R.id.time);
+
+        time.setText(currentEarthquake.geteTime());
+
         return listItemView;
     }
 }
