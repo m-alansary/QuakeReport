@@ -1,20 +1,27 @@
 package com.example.android.quakereport;
 
 public class Earthquake {
-    private String eCountry;
+    private String ePrimaryLocation;
+    private String eLocationOffset;
     private String eDate;
     private String eMag;
     private String eTime;
 
-    public Earthquake(String country, String date, String mag, String time) {
-        eCountry = country;
+
+    public Earthquake(String primaryLocation, String locationOffset, String date, String mag, String time) {
+        ePrimaryLocation = primaryLocation;
+        eLocationOffset = locationOffset;
         eDate = date;
         eMag = mag;
         eTime = time;
     }
 
-    public String getCountry() {
-        return eCountry;
+    public String getPrimaryLocation() {
+        return ePrimaryLocation;
+    }
+
+    public String getLocationOffset() {
+        return eLocationOffset;
     }
 
     public String getDate() {
