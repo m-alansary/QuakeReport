@@ -6,14 +6,16 @@ public class Earthquake {
     private String eDate;
     private String eMag;
     private String eTime;
+    private String eURL;
 
 
-    public Earthquake(String primaryLocation, String locationOffset, String date, String mag, String time) {
+    public Earthquake(String primaryLocation, String locationOffset, String date, String mag, String time, String URL) {
         ePrimaryLocation = primaryLocation;
         eLocationOffset = locationOffset;
         eDate = date;
         eMag = mag;
         eTime = time;
+        eURL = URL;
     }
 
     public String getPrimaryLocation() {
@@ -34,6 +36,10 @@ public class Earthquake {
 
     public String geteTime() {
         return eTime;
+    }
+
+    public String getURL() {
+        return eURL;
     }
 }
 
