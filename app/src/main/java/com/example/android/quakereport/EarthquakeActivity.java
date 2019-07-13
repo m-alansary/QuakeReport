@@ -25,12 +25,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EarthquakeActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Earthquake>> {
     private EarthquakeAdaptor mAdaptor;
+    TextView emptyView;
     private static final String REQUEST_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
     private static final int EARTHQUAKE_LOADER_ID = 1;
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
@@ -56,6 +58,10 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
                 startActivity(intent);
             }
         });
+
+        emptyView = (TextView) findViewById(R.id.empty);
+        earthquakeListView.setEmptyView(emptyView);
+
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
     }
@@ -73,6 +79,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         if (earthquakes != null && !earthquakes.isEmpty()) {
             mAdaptor.addAll(earthquakes);
         }
+        emptyView.setText("No Earthquakes found.");
     }
 
     @Override
